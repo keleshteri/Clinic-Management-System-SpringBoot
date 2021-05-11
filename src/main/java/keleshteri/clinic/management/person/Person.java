@@ -46,8 +46,11 @@ public abstract  class Person implements Serializable {
 
     private String homeAddress;
 
-    private String phoneNumber;
+    private String landlineNumberHome;
 
-    private String personalImage;
+    private String landlineNumberOffice;
+
+    private String cellphoneNumber;
+
 
 }

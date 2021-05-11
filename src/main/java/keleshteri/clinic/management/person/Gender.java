@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 
+import java.util.Arrays;
+
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 //@JsonSerialize(using = GenderSerializer.class)
 @Getter
@@ -23,17 +25,8 @@ public enum Gender {
         this.code = code;
     }
 
-//    public int getCode() {
-//        return code;
-//    }
-
     public String getName() {
         return this.name();
     }
 
-
-    @JsonCreator
-    public static Gender fromJson(@JsonProperty("name") String name) {
-        return valueOf(name);
-    }
 }
