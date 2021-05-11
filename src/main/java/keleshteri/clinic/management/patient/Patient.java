@@ -33,8 +33,10 @@ public class Patient extends Person implements Serializable {
 //    protected Date createdDate;
 
     @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 }

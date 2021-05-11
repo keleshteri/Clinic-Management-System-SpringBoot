@@ -1,5 +1,6 @@
 package keleshteri.clinic.management.patient;
 
+import keleshteri.clinic.management.exception.RecordExistsException;
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -52,6 +53,19 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public ResponseEntity<Patient> create(Patient patient) {
+        //check if findByFileNumber
+        boolean existsFileNumber = patientRepository.existsByFileNumber(patient.getFileNumber());
+        if(existsFileNumber){
+            throw  new RecordExistsException("Patient exist with FileNumber: "+ patient.getFileNumber());
+        }
+        //exists nationalId
+        boolean existsNationalId = patientRepository.existsByNationalId(patient.getNationalId());
+        if(existsNationalId){
+            throw  new RecordExistsException("Patient exist with NationalId: "+ patient.getNationalId());
+        }
+
+
+//                .orElseThrow(() -> new ResourceNotFoundException("Patient not exist with id :" ));
 //        try{
         return ResponseEntity.ok(patientRepository.save(patient));
 //            return new ResponseEntity<Patient>(HttpStatus.FORBIDDEN);
