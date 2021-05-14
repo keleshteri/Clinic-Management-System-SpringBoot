@@ -42,6 +42,7 @@ public abstract  class Person implements Serializable {
     @Column(unique = true)
     private String nationalId;
 
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     private String homeAddress;
