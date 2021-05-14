@@ -8,25 +8,37 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 //@JsonSerialize(using = GenderSerializer.class)
 @Getter
 public enum Gender {
-
-    MALE("male",1),
-    FEMALE("female",2);
+    FEMALE("female",1),
+    MALE("male",2);
 
     private final String label;
     private final Integer code;
 
-    Gender(String value,int code){
+    private  Gender(String value,int code){
         this.label = value;
         this.code = code;
     }
 
+
+
+    @JsonCreator
+    public static Gender decode(final String name) {
+        return Stream.of(Gender.values()).filter(targetEnum -> targetEnum.name().equals(name)).findFirst().orElse(null);
+    }
+
+//    @JsonValue
+//    public Integer getCode() {
+//        return code;
+//    }
+
+    @JsonValue
     public String getName() {
         return this.name();
     }
-
 }
