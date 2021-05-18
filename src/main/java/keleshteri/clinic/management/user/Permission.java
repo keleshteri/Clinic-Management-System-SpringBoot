@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -23,4 +25,17 @@ public class Permission {
 
     @Column(name = "is_active", nullable = false)
     private Boolean active;
+
+    //
+
+    public Permission() {
+    }
+
+    public Permission(String name, String slug) {
+        this.name = name;
+        this.slug = slug;
+        this.active=true;
+    }
+
+
 }
