@@ -17,7 +17,7 @@ public interface EmailVerificationTokenRepository extends JpaRepository<EmailVer
 
     @Transactional
     @Modifying
-    @Query("UPDATE ConfirmationToken c " +
+    @Query("UPDATE EmailVerificationToken c " +
             "SET c.confirmedAt = ?2 " +
             "WHERE c.token = ?1")
     int updateConfirmedAt(String token,
