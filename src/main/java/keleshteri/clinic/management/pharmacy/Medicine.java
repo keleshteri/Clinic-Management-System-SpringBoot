@@ -11,6 +11,9 @@ public class Medicine {
     @Column(nullable = false,updatable = false)
     private Long id;
 
+    @Column(nullable = false,unique = true)
+    private Integer code;
+
     private String name;
     private String description;
 
