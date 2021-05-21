@@ -1,5 +1,6 @@
 package keleshteri.clinic.management.locale;
 
+import keleshteri.clinic.management.pharmacy.MedicineTranslation;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,10 +10,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Getter @Setter
 @Entity
-@Table(name = "locale")
+@Table(name = "locales")
 public class Locale implements Serializable {
 
     @Id
@@ -20,8 +22,9 @@ public class Locale implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
 
+
     @NotNull(message = "Please Enter code")
-    @Column(unique = true,length = 12)
+    @Column(unique = true,length = 12,updatable = false,nullable = false)
     private String code;
 
     @CreationTimestamp
@@ -31,6 +34,9 @@ public class Locale implements Serializable {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "locale", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Set<MedicineTranslation> medicineTranslations;
 
     ///Constructor
 

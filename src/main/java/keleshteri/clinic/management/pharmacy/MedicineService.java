@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.ConstraintMode;
 import java.util.List;
 
 @Service
@@ -14,14 +15,23 @@ public class MedicineService {
 
     private final MedicineRepository medicineRepository;
 
+    private final MedicineTranslationRepository medicineTranslationRepository;
+    MedicineTranslation medicineTranslation;
     @Autowired
-    public MedicineService(MedicineRepository medicineRepository) {
+    public MedicineService(MedicineRepository medicineRepository, MedicineTranslationRepository medicineTranslationRepository) {
         this.medicineRepository = medicineRepository;
+
+        this.medicineTranslationRepository = medicineTranslationRepository;
     }
 
     ResponseEntity<List<Medicine>> pagination(){
         List<Medicine> medicines= medicineRepository.findAll();
         System.out.println(medicines.size());
+        medicineTranslationRepository.findAll().forEach(medicineTranslation1 -> {
+            System.out.println(medicineTranslation1.getLocale().getCode());
+        });
+        System.out.println(medicineTranslationRepository.findAll());
+
         //responseHeaders
         HttpHeaders responseHeaders = new HttpHeaders();
         //set Content-Range

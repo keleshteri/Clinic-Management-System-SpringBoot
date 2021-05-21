@@ -10,40 +10,40 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class LocaleService implements GlobalService<Locale> {
+public class LocaleService  {
 
     @Autowired
     LocaleRepository localeRepository;
 
 
-    @Override
+
     public List<Locale> all() {
         return localeRepository.findAll();
     }
 
-    @Override
+
     public ResponseEntity<Locale> find(Long id) {
         Locale locale = localeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Locale not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Locale not exist with code :" + id));
         return ResponseEntity.ok(locale);
     }
 
-    @Override
+
     public ResponseEntity<List<Locale>> pagination() {
         return null;
     }
 
-    @Override
+
     public ResponseEntity<Locale> create(Locale locale) {
         return ResponseEntity.ok(localeRepository.save(locale));
     }
 
-    @Override
-    public ResponseEntity<Locale> update(Long id, Locale locale) {
+
+    public ResponseEntity<Locale> update(Long  id, Locale locale) {
         return null;
     }
 
-    @Override
+
     public ResponseEntity<Map<String, Boolean>> delete(Long id) {
         return null;
     }

@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Table(
         name = "medicine_translation",
         uniqueConstraints=
-        @UniqueConstraint(columnNames = {"medicine_id", "locale_id"})
+        @UniqueConstraint(columnNames = {"medicine_id", "locale"})
 )
 public class MedicineTranslation {
 
@@ -23,18 +23,24 @@ public class MedicineTranslation {
     @Column(nullable = false,updatable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "medicine_id", nullable = false)
+    private String name;
+    private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.ALL)
+    @JoinColumn(name = "medicine_id", nullable = false )
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Medicine medicine;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "locale_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.ALL)
+//    @JoinColumn(name = "locale",table = "medicine_translation",referencedColumnName = "locale",foreignKey = @ForeignKey(name = "code",value = ConstraintMode.CONSTRAINT))
+//    @JoinColumn(columnDefinition = "locale_id",foreignKey = @ForeignKey(name = "code",value = ConstraintMode.NO_CONSTRAINT))
+//    @JoinTable(name="locales", joinColumns=@JoinColumn(referencedColumnName = "locale",foreignKey = @ForeignKey(name = "code")))
+    @JoinColumn(name = "locale", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Locale locale;
 
-    private String name;
-    private String description;
+
+
 }
