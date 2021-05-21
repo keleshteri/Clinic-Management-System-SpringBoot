@@ -1,10 +1,19 @@
 package keleshteri.clinic.management.pharmacy;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Where;
+import org.springframework.http.ResponseEntity;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+@Getter @Setter
 @Entity
 @Table(name = "medicines")
-public class Medicine {
+public class Medicine implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +26,20 @@ public class Medicine {
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "medicine",fetch = FetchType.LAZY)
+    private Set<MedicineTranslation> medicineTranslations;
+
+    @OneToOne(mappedBy = "medicine",fetch = FetchType.LAZY)
+    @Where(clause = "locale_id=1")
+    private MedicineTranslation medicineTranslation;
+
+    public String getMedicineTranslation() {
+        return medicineTranslation.getName();
+    }
+
+    public String getNameEn(){
+        return "ypo";
+    }
 
 
 }

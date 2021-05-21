@@ -44,7 +44,7 @@ public class PatientServiceImpl implements PatientService {
         List<Patient> patient= patientRepository.findAll();
 
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Content-Range", "posts 0-"+patient.size() + "/" + patient.size());
+        responseHeaders.set("Content-Range", "patients 0-"+patient.size() + "/" + patient.size());
 
         return ResponseEntity.ok()
                 .headers(responseHeaders)
@@ -88,12 +88,23 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public ResponseEntity<Patient> update(Long id, Patient patientDetails) {
+        System.out.println("update-Patient");
         //check if patient id
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not exist with id :" + id));
         //set for update
         patient.setFirstName(patientDetails.getFirstName());
         patient.setLastName(patientDetails.getLastName());
+        patient.setMiddleName(patientDetails.getMiddleName());
+        patient.setNationalId(patientDetails.getNationalId());
+        patient.setFileNumber(patientDetails.getFileNumber());
+        patient.setGender(patientDetails.getGender());
+        patient.setBirthDate(patientDetails.getBirthDate());
+        patient.setEmail(patientDetails.getEmail());
+        patient.setCellphoneNumber(patientDetails.getCellphoneNumber());
+        patient.setLandlineNumberHome(patientDetails.getLandlineNumberHome());
+        patient.setLandlineNumberOffice(patientDetails.getLandlineNumberOffice());
+        patient.setHomeAddress(patientDetails.getHomeAddress());
         //patient save  data or update
         Patient updatedPatient = patientRepository.save(patient);
 
