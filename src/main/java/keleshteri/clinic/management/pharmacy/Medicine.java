@@ -29,9 +29,7 @@ public class Medicine implements Serializable {
     @OneToMany(mappedBy = "medicine",fetch = FetchType.LAZY)
     private Set<MedicineTranslation> medicineTranslations;
 
-    @OneToOne(mappedBy = "medicine",fetch = FetchType.LAZY)
-    @Where(clause = "locale_id=1")
-    private MedicineTranslation medicineTranslation;
+
 
 
 }
