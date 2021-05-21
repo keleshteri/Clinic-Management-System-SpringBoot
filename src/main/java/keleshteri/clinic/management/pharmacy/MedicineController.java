@@ -14,9 +14,6 @@ public class MedicineController {
     @Autowired
     private   MedicineService medicineService;
 
-
-
-
     //get
     @GetMapping()
     ResponseEntity<List<Medicine>> getAll(){
