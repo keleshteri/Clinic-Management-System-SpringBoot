@@ -33,13 +33,5 @@ public class Medicine implements Serializable {
     @Where(clause = "locale_id=1")
     private MedicineTranslation medicineTranslation;
 
-    public String getMedicineTranslation() {
-        return medicineTranslation.getName();
-    }
-
-    public String getNameEn(){
-        return "ypo";
-    }
-
 
 }
