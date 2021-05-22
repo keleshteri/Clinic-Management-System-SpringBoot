@@ -1,13 +1,9 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Where;
-import org.springframework.http.ResponseEntity;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter @Setter

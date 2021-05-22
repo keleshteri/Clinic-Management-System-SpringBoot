@@ -1,4 +1,4 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.model;
 
 import lombok.Getter;
 import lombok.Setter;

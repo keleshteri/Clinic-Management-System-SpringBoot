@@ -1,13 +1,16 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.service;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 
+import keleshteri.clinic.management.pharmacy.model.Medicine;
+import keleshteri.clinic.management.pharmacy.model.MedicineTranslation;
+import keleshteri.clinic.management.pharmacy.repository.MedicineRepository;
+import keleshteri.clinic.management.pharmacy.repository.MedicineTranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.ConstraintMode;
 import java.util.List;
 
 @Service
@@ -24,7 +27,7 @@ public class MedicineService {
         this.medicineTranslationRepository = medicineTranslationRepository;
     }
 
-    ResponseEntity<List<Medicine>> pagination(){
+    public ResponseEntity<List<Medicine>> pagination(){
         List<Medicine> medicines= medicineRepository.findAll();
         System.out.println(medicines.size());
         medicineTranslationRepository.findAll().forEach(medicineTranslation1 -> {

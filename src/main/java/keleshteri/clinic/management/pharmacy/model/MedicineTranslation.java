@@ -1,7 +1,8 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import keleshteri.clinic.management.locale.Locale;
+import keleshteri.clinic.management.pharmacy.model.Medicine;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;

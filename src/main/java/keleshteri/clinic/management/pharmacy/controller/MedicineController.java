@@ -1,5 +1,7 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.controller;
 
+import keleshteri.clinic.management.pharmacy.model.Medicine;
+import keleshteri.clinic.management.pharmacy.service.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,7 @@ import java.util.List;
 public class MedicineController {
 
     @Autowired
-    private   MedicineService medicineService;
+    private MedicineService medicineService;
 
     //get
     @GetMapping()

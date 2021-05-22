@@ -1,4 +1,4 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,7 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.controller;
 
-import keleshteri.clinic.management.patient.Patient;
+import keleshteri.clinic.management.pharmacy.service.CompanyService;
+import keleshteri.clinic.management.pharmacy.model.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

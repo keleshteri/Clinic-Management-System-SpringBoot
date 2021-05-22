@@ -1,6 +1,6 @@
 package keleshteri.clinic.management.locale;
 
-import keleshteri.clinic.management.pharmacy.MedicineTranslation;
+import keleshteri.clinic.management.pharmacy.model.MedicineTranslation;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;

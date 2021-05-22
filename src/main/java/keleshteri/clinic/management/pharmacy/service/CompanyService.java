@@ -1,7 +1,9 @@
-package keleshteri.clinic.management.pharmacy;
+package keleshteri.clinic.management.pharmacy.service;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import keleshteri.clinic.management.global.GlobalService;
+import keleshteri.clinic.management.pharmacy.model.Company;
+import keleshteri.clinic.management.pharmacy.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
