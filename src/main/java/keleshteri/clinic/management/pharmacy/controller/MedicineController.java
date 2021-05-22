@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/medicine")
+@RequestMapping("/api/v1/medicines")
 public class MedicineController {
 
     @Autowired
@@ -41,6 +42,12 @@ public class MedicineController {
     public ResponseEntity<Medicine>update(@PathVariable Long id, @RequestBody Medicine medicineDetails){
         return medicineService.update(id,medicineDetails);
     }
+
+    //Delete
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable Long id){
+//        return   medicineService.delete(id);
+//    }
 
 
 }

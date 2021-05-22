@@ -20,6 +20,7 @@ public class MedicineService {
 
     private final MedicineTranslationRepository medicineTranslationRepository;
     MedicineTranslation medicineTranslation;
+
     @Autowired
     public MedicineService(MedicineRepository medicineRepository, MedicineTranslationRepository medicineTranslationRepository) {
         this.medicineRepository = medicineRepository;

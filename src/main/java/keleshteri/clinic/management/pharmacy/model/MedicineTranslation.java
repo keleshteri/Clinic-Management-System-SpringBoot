@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(
         name = "medicine_translation",
         uniqueConstraints=
-        @UniqueConstraint(columnNames = {"medicine_id", "locale"})
+        @UniqueConstraint(columnNames = {"medicine_id", "locale_id"})
 )
 public class MedicineTranslation {
 
@@ -37,7 +37,7 @@ public class MedicineTranslation {
 //    @JoinColumn(name = "locale",table = "medicine_translation",referencedColumnName = "locale",foreignKey = @ForeignKey(name = "code",value = ConstraintMode.CONSTRAINT))
 //    @JoinColumn(columnDefinition = "locale_id",foreignKey = @ForeignKey(name = "code",value = ConstraintMode.NO_CONSTRAINT))
 //    @JoinTable(name="locales", joinColumns=@JoinColumn(referencedColumnName = "locale",foreignKey = @ForeignKey(name = "code")))
-    @JoinColumn(name = "locale", nullable = false)
+    @JoinColumn(name = "locale_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Locale locale;
