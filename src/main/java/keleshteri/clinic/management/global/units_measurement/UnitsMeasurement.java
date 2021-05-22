@@ -2,6 +2,7 @@ package keleshteri.clinic.management.global.units_measurement;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import keleshteri.clinic.management.global.quantity.Quantity;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class UnitsMeasurement implements Serializable {
     @JoinColumn(name = "quantity_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 //    @JsonIgnore
+//    @JsonIgnoreProperties(value = "unitsMeasurements", allowGetters = true)
     private Quantity quantity;
 
     @NotNull(message = "Please enter  Units Name")
@@ -39,7 +41,6 @@ public class UnitsMeasurement implements Serializable {
 
 
     public String getQuantity() {
-
         return quantity.getName();
     }
 
