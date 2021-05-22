@@ -2,7 +2,7 @@ package keleshteri.clinic.management.pharmacy.service;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import keleshteri.clinic.management.global.GlobalService;
-import keleshteri.clinic.management.pharmacy.model.Company;
+import keleshteri.clinic.management.pharmacy.model.MedicineCompany;
 import keleshteri.clinic.management.pharmacy.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class CompanyService implements GlobalService<Company> {
+public class CompanyService implements GlobalService<MedicineCompany> {
 
     private final CompanyRepository companyRepository;
 
@@ -23,20 +23,20 @@ public class CompanyService implements GlobalService<Company> {
     }
 
     @Override
-    public List<Company> all() {
+    public List<MedicineCompany> all() {
         return companyRepository.findAll();
     }
 
     @Override
-    public ResponseEntity<Company> find(Long id) {
-        Company company= companyRepository.findById(id)
+    public ResponseEntity<MedicineCompany> find(Long id) {
+        MedicineCompany medicineCompany = companyRepository.findById(id)
                          .orElseThrow(()-> new ResourceNotFoundException("Company not exist with id :" + id));
-        return ResponseEntity.ok(company);
+        return ResponseEntity.ok(medicineCompany);
     }
 
     @Override
-    public ResponseEntity<List<Company>> pagination() {
-        List<Company> companies = companyRepository.findAll();
+    public ResponseEntity<List<MedicineCompany>> pagination() {
+        List<MedicineCompany> companies = companyRepository.findAll();
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Range", "companies 0-"+companies.size() + "/" + companies.size());
@@ -47,33 +47,33 @@ public class CompanyService implements GlobalService<Company> {
     }
 
     @Override
-    public ResponseEntity<Company> create(Company company) {
-        return ResponseEntity.ok(companyRepository.save(company));
+    public ResponseEntity<MedicineCompany> create(MedicineCompany medicineCompany) {
+        return ResponseEntity.ok(companyRepository.save(medicineCompany));
     }
 
     @Override
-    public ResponseEntity<Company> update(Long id, Company companyDetails) {
+    public ResponseEntity<MedicineCompany> update(Long id, MedicineCompany medicineCompanyDetails) {
         //get the record
-        Company company= companyRepository.findById(id)
+        MedicineCompany medicineCompany = companyRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Company not exist with id :" + id));
         //set for update
-        company.setName(companyDetails.getName());
-        company.setDescription(companyDetails.getDescription());
+        medicineCompany.setName(medicineCompanyDetails.getName());
+        medicineCompany.setDescription(medicineCompanyDetails.getDescription());
 
         //patient save  data or update
-        Company companyUpdate = companyRepository.save(company);
+        MedicineCompany medicineCompanyUpdate = companyRepository.save(medicineCompany);
 
-        return ResponseEntity.ok(companyUpdate);
+        return ResponseEntity.ok(medicineCompanyUpdate);
     }
 
     @Override
     public ResponseEntity<Map<String, Boolean>> delete(Long id) {
         //get the record
-        Company company= companyRepository.findById(id)
+        MedicineCompany medicineCompany = companyRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Company not exist with id :" + id));
 
         //delete
-        companyRepository.delete(company);
+        companyRepository.delete(medicineCompany);
 
         //response
         Map<String, Boolean> response = new HashMap<>();
