@@ -23,6 +23,13 @@ public class Quantity {
     @Column(name = "description")
     private String description;
 
+    //
 
+    public Quantity() {
+    }
 
+    public Quantity(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

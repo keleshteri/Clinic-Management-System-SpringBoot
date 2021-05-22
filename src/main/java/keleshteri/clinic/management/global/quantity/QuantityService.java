@@ -71,4 +71,17 @@ public class QuantityService implements GlobalService<Quantity> {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+    public void seeder(){
+        if(quantityRepository.count()==0){
+            Quantity mass   = new Quantity("Mass","Mass (weight)");
+            Quantity volume = new Quantity("Volume","Volume");
+            Quantity amount = new Quantity("Amount","Amount");
+
+            quantityRepository.save(mass);
+            quantityRepository.save(volume);
+            quantityRepository.save(amount);
+
+        }
+    }
 }

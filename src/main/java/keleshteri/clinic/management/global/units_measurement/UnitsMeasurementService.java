@@ -75,4 +75,10 @@ public class UnitsMeasurementService implements GlobalService<UnitsMeasurement> 
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+    public void seeder(){
+        if(unitsMeasurementRepository.count()==0){
+
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package keleshteri.clinic.management;
 
+import keleshteri.clinic.management.global.quantity.QuantityService;
 import keleshteri.clinic.management.locale.Locale;
 import keleshteri.clinic.management.locale.LocaleService;
 import keleshteri.clinic.management.user.PermissionService;
@@ -20,6 +21,9 @@ public class DataSeeder implements CommandLineRunner {
     PermissionService permissionService;
 
     @Autowired
+    QuantityService quantityService;
+
+    @Autowired
     UserService userService;
 
     @Override
@@ -27,6 +31,7 @@ public class DataSeeder implements CommandLineRunner {
         localeService.seeder();
         permissionService.seeder();
         roleService.seeder();
+        quantityService.seeder();
 
         userService.seeder();
         System.out.println("DataSeeder");
