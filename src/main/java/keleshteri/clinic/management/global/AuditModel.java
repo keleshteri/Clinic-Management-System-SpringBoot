@@ -1,4 +1,4 @@
-package keleshteri.clinic.management.model;
+package keleshteri.clinic.management.global;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

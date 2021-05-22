@@ -1,4 +1,4 @@
-package keleshteri.clinic.management;
+package keleshteri.clinic.management.global;
 
 import org.springframework.http.ResponseEntity;
 

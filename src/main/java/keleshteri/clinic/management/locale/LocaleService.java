@@ -1,6 +1,5 @@
 package keleshteri.clinic.management.locale;
 
-import keleshteri.clinic.management.GlobalService;
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
