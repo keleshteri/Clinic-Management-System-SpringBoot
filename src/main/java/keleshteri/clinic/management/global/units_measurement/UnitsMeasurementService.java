@@ -2,6 +2,7 @@ package keleshteri.clinic.management.global.units_measurement;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import keleshteri.clinic.management.global.GlobalService;
+import keleshteri.clinic.management.pharmacy.model.Medicine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,12 @@ public class UnitsMeasurementService implements GlobalService<UnitsMeasurement> 
     @Autowired
     public UnitsMeasurementService(UnitsMeasurementRepository unitsMeasurementRepository) {
         this.unitsMeasurementRepository = unitsMeasurementRepository;
+    }
+
+    public UnitsMeasurement findModel(Long id){
+        UnitsMeasurement unitsMeasurement = unitsMeasurementRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Units Measurement not exist with id :" + id));
+        return  unitsMeasurement;
     }
 
     @Override

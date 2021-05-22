@@ -2,6 +2,7 @@ package keleshteri.clinic.management.pharmacy.service;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import keleshteri.clinic.management.global.GlobalService;
+import keleshteri.clinic.management.pharmacy.model.Medicine;
 import keleshteri.clinic.management.pharmacy.model.MedicineCompany;
 import keleshteri.clinic.management.pharmacy.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,19 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class CompanyService implements GlobalService<MedicineCompany> {
+public class MedicineCompanyService implements GlobalService<MedicineCompany> {
 
     private final CompanyRepository companyRepository;
 
     @Autowired
-    public CompanyService(CompanyRepository companyRepository) {
+    public MedicineCompanyService(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
+    }
+
+    public MedicineCompany findModel(Long id){
+        MedicineCompany medicineCompany = companyRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Company not exist with id :" + id));
+        return  medicineCompany;
     }
 
     @Override

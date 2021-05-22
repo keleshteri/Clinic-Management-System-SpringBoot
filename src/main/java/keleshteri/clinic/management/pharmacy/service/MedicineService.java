@@ -2,6 +2,7 @@ package keleshteri.clinic.management.pharmacy.service;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 
+import keleshteri.clinic.management.global.quantity.Quantity;
 import keleshteri.clinic.management.pharmacy.model.Medicine;
 import keleshteri.clinic.management.pharmacy.model.MedicineTranslation;
 import keleshteri.clinic.management.pharmacy.repository.MedicineRepository;
@@ -26,6 +27,12 @@ public class MedicineService {
         this.medicineRepository = medicineRepository;
 
         this.medicineTranslationRepository = medicineTranslationRepository;
+    }
+
+    public Medicine findModel(Long id){
+        Medicine medicine = medicineRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("medicine not exist with id :" + id));
+        return  medicine;
     }
 
     public ResponseEntity<List<Medicine>> pagination(){
