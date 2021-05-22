@@ -23,4 +23,6 @@ public class Quantity {
     @Column(name = "description")
     private String description;
 
+
+
 }
