@@ -26,6 +26,12 @@ public class QuantityService implements GlobalService<Quantity> {
         return quantityRepository.findAll();
     }
 
+    public  Quantity findModel(Long id){
+          Quantity quantity = quantityRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Quantity not exist with id :" + id));
+          return  quantity;
+    }
+
     @Override
     public ResponseEntity<Quantity> find(Long id) {
         Quantity quantity = quantityRepository.findById(id)

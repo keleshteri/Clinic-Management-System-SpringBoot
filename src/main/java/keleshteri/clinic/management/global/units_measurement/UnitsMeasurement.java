@@ -1,5 +1,6 @@
 package keleshteri.clinic.management.global.units_measurement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import keleshteri.clinic.management.global.quantity.Quantity;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class UnitsMeasurement {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "quantity_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Quantity quantity;
 
     @NotNull(message = "Please enter  Units Name")
@@ -31,4 +33,16 @@ public class UnitsMeasurement {
 
     @Column(name = "description")
     private String description;
+
+    //
+
+
+    public UnitsMeasurement() {
+    }
+
+    public UnitsMeasurement(Quantity quantity, String name, String description) {
+        this.quantity = quantity;
+        this.name = name;
+        this.description = description;
+    }
 }

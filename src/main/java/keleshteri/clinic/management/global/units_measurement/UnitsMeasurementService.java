@@ -48,6 +48,9 @@ public class UnitsMeasurementService implements GlobalService<UnitsMeasurement> 
 
     @Override
     public ResponseEntity<UnitsMeasurement> create(UnitsMeasurement unitsMeasurement) {
+        System.out.println("here save UnitsMeasurement");
+        System.out.println(unitsMeasurement.getName());
+        System.out.println(unitsMeasurement.getQuantity());
         return ResponseEntity.ok(unitsMeasurementRepository.save(unitsMeasurement));
     }
 
