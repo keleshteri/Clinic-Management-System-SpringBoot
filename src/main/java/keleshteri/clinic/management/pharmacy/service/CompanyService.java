@@ -58,6 +58,7 @@ public class CompanyService implements GlobalService<Company> {
                 .orElseThrow(()-> new ResourceNotFoundException("Company not exist with id :" + id));
         //set for update
         company.setName(companyDetails.getName());
+        company.setDescription(companyDetails.getDescription());
 
         //patient save  data or update
         Company companyUpdate = companyRepository.save(company);
