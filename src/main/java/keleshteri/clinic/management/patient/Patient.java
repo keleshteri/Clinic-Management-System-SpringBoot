@@ -19,7 +19,6 @@ import java.util.Date;
 public class Patient extends Person implements Serializable {
 
 
-
     @NotNull(message = "Please enter fileNumber")
     @Column(unique = true,nullable = false)
     private Long fileNumber;

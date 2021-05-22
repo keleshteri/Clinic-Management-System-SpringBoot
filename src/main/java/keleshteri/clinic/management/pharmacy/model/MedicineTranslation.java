@@ -9,6 +9,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter @Setter
 @Entity
@@ -17,7 +18,7 @@ import javax.persistence.*;
         uniqueConstraints=
         @UniqueConstraint(columnNames = {"medicine_id", "locale_id"})
 )
-public class MedicineTranslation {
+public class MedicineTranslation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

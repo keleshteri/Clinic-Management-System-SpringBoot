@@ -37,6 +37,13 @@ public class UnitsMeasurementService implements GlobalService<UnitsMeasurement> 
     public ResponseEntity<List<UnitsMeasurement>> pagination() {
         List<UnitsMeasurement> unitsMeasurements = unitsMeasurementRepository.findAll();
 
+        System.out.println("here to pagination ");
+        unitsMeasurements.forEach(u -> {
+            System.out.println(u.getName());
+            System.out.println(u.getQuantity());
+        });
+        System.out.println(unitsMeasurements);
+
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Range", "unitsMeasurements 0-"+unitsMeasurements.size() + "/" + unitsMeasurements.size());
 

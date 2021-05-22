@@ -1,5 +1,6 @@
 package keleshteri.clinic.management.global.units_measurement;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import keleshteri.clinic.management.global.quantity.Quantity;
 import lombok.Getter;
@@ -9,11 +10,12 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter @Setter
 @Entity
 @Table(name = "units_measurements")
-public class UnitsMeasurement {
+public class UnitsMeasurement implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +26,7 @@ public class UnitsMeasurement {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "quantity_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+//    @JsonIgnore
     private Quantity quantity;
 
     @NotNull(message = "Please enter  Units Name")
@@ -34,15 +36,12 @@ public class UnitsMeasurement {
     @Column(name = "description")
     private String description;
 
-    //
 
 
-    public UnitsMeasurement() {
+    public String getQuantity() {
+
+        return quantity.getName();
     }
 
-    public UnitsMeasurement(Quantity quantity, String name, String description) {
-        this.quantity = quantity;
-        this.name = name;
-        this.description = description;
-    }
+
 }
