@@ -18,10 +18,6 @@ public class MedicineProduct {
     @Column(nullable = false,updatable = false)
     private Long id;
 
-
-
-
-
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
