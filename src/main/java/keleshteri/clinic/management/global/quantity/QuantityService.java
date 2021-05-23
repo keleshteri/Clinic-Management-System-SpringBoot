@@ -26,6 +26,12 @@ public class QuantityService implements GlobalService<Quantity> {
         return quantityRepository.findAll();
     }
 
+    public  Quantity findName(String name){
+        Quantity quantity = quantityRepository.findByName(name)
+                .orElseThrow(()-> new ResourceNotFoundException("Quantity not exist with Name :" + name));
+        return  quantity;
+    }
+
     public  Quantity findModel(Long id){
           Quantity quantity = quantityRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Quantity not exist with id :" + id));

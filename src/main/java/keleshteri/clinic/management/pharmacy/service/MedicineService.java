@@ -80,4 +80,21 @@ public class MedicineService {
         Medicine updatedMedicine = medicineRepository.save(medicine);
         return ResponseEntity.ok(updatedMedicine);
     }
+
+
+    public void seeder(){
+        if(medicineRepository.count()==0){
+            Medicine methadone = new Medicine(800,"Methadone","Methadone");
+            Medicine opium     = new Medicine(801,"Opium","Opium");
+            Medicine buprenorphine = new Medicine(802,"Buprenorphine","Buprenorphine");
+            Medicine suboxone = new Medicine(803,"Suboxone","Suboxone");
+            //save
+            medicineRepository.save(methadone);
+            medicineRepository.save(opium);
+            medicineRepository.save(buprenorphine);
+            medicineRepository.save(suboxone);
+        }
+    }
+
+
 }

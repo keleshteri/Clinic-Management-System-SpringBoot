@@ -2,6 +2,9 @@ package keleshteri.clinic.management.global.units_measurement;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
 import keleshteri.clinic.management.global.GlobalService;
+import keleshteri.clinic.management.global.quantity.Quantity;
+import keleshteri.clinic.management.global.quantity.QuantityRepository;
+import keleshteri.clinic.management.global.quantity.QuantityService;
 import keleshteri.clinic.management.pharmacy.model.Medicine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -11,11 +14,15 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UnitsMeasurementService implements GlobalService<UnitsMeasurement> {
 
     private  final UnitsMeasurementRepository unitsMeasurementRepository;
+
+    @Autowired
+    private QuantityService quantityService;
 
     @Autowired
     public UnitsMeasurementService(UnitsMeasurementRepository unitsMeasurementRepository) {
@@ -95,7 +102,32 @@ public class UnitsMeasurementService implements GlobalService<UnitsMeasurement> 
 
     public void seeder(){
         if(unitsMeasurementRepository.count()==0){
+            Quantity Mass    = quantityService.findName("Mass");
+            Quantity Volume  = quantityService.findName("Volume");
+            Quantity Amount  = quantityService.findName("Amount");
+            //Mass
+            UnitsMeasurement kilogram = new UnitsMeasurement(Mass,"kilogram","Kg","kilogram");
+            UnitsMeasurement gram = new UnitsMeasurement(Mass,"gram","g","gram");
+            UnitsMeasurement milligram = new UnitsMeasurement(Mass,"milligram","mg","milligram");
+            UnitsMeasurement microgram = new UnitsMeasurement(Mass,"microgram","mcg","microgram");
+            //Volume
+            UnitsMeasurement litre = new UnitsMeasurement(Volume,"litre","L","litre");
+            UnitsMeasurement millilitre = new UnitsMeasurement(Volume,"millilitre","ml","millilitre");
+            UnitsMeasurement cubic_centimetre = new UnitsMeasurement(Volume,"cubic centimetre","cc","cubic centimetre");
+            //Amount
+            UnitsMeasurement mole = new UnitsMeasurement(Amount,"mole","mol","mole");
+            UnitsMeasurement millimole = new UnitsMeasurement(Amount,"millimole","mmol","millimole");
 
+            //save
+            unitsMeasurementRepository.save(kilogram);
+            unitsMeasurementRepository.save(gram);
+            unitsMeasurementRepository.save(milligram);
+            unitsMeasurementRepository.save(microgram);
+            unitsMeasurementRepository.save(litre);
+            unitsMeasurementRepository.save(millilitre);
+            unitsMeasurementRepository.save(cubic_centimetre);
+            unitsMeasurementRepository.save(mole);
+            unitsMeasurementRepository.save(millimole);
         }
     }
 }
