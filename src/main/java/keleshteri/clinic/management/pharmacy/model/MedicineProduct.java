@@ -54,6 +54,14 @@ public class MedicineProduct implements Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "medicine_type_id",nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private MedicineType medicineType;
+
+
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "dose_units_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 //    @JsonIgnore
@@ -86,5 +94,9 @@ public class MedicineProduct implements Serializable {
 
     public String getDoseUnitsName() {
         return doseUnits.getName();
+    }
+
+    public String getMedicineTypeName() {
+        return medicineType.getName();
     }
 }
