@@ -6,11 +6,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
 @Table(name = "medicine_types")
-public class MedicineType {
+public class MedicineType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
