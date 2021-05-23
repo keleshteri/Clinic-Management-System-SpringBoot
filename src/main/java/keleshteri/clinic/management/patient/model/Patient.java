@@ -1,4 +1,4 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.model;
 
 
 import keleshteri.clinic.management.person.Person;

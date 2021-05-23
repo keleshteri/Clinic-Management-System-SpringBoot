@@ -1,5 +1,7 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.repository;
 
+import keleshteri.clinic.management.patient.model.Patient;
+import keleshteri.clinic.management.patient.model.PatientImage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

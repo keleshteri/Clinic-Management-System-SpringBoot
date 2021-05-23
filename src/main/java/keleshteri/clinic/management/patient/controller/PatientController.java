@@ -1,5 +1,7 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.controller;
 
+import keleshteri.clinic.management.patient.model.Patient;
+import keleshteri.clinic.management.patient.service.PatientService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +18,7 @@ import java.util.Map;
 public class PatientController {
 
     @Autowired
-    private  PatientService patientService;
+    private PatientService patientService;
 
     @GetMapping()
     ResponseEntity<List<Patient>> getAll()

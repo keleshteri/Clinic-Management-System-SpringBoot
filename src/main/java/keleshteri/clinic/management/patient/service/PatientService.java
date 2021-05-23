@@ -1,5 +1,6 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.service;
 
+import keleshteri.clinic.management.patient.model.Patient;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.model;
 
 
 import lombok.Getter;
@@ -8,8 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;

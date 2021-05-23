@@ -1,5 +1,6 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.repository;
 
+import keleshteri.clinic.management.patient.model.Patient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

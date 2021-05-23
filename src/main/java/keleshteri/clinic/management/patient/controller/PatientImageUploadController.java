@@ -1,19 +1,14 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.controller;
 
+import keleshteri.clinic.management.patient.service.PatientImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Optional;
-import java.util.zip.DataFormatException;
-import java.util.zip.Deflater;
-import java.util.zip.Inflater;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")

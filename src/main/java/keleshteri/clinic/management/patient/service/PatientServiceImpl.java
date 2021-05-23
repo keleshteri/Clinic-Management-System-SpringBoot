@@ -1,7 +1,9 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.service;
 
 import keleshteri.clinic.management.exception.RecordExistsException;
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
+import keleshteri.clinic.management.patient.model.Patient;
+import keleshteri.clinic.management.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

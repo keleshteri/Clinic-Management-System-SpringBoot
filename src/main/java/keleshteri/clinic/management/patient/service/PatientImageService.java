@@ -1,8 +1,11 @@
-package keleshteri.clinic.management.patient;
+package keleshteri.clinic.management.patient.service;
 
 import keleshteri.clinic.management.exception.ResourceNotFoundException;
+import keleshteri.clinic.management.patient.model.Patient;
+import keleshteri.clinic.management.patient.model.PatientImage;
+import keleshteri.clinic.management.patient.repository.PatientImageRepository;
+import keleshteri.clinic.management.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.apache.commons.io.IOUtils;
 
@@ -19,7 +22,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Optional;
 import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
