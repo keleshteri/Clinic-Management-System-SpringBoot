@@ -87,4 +87,29 @@ public class MedicineCompanyService implements GlobalService<MedicineCompany> {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+    public void seeder(){
+        if(companyRepository.count()==0){
+            MedicineCompany DarouPakhsh = new MedicineCompany("Darou Pakhsh","Darou Pakhsh Pharmaceutical Mfg. Co");
+            MedicineCompany Zagrosdarou = new MedicineCompany("Zagros Darou","Zagros Darou");
+            MedicineCompany DarouDarmanPars = new MedicineCompany("Darou Darman Pars","Darou Darman Pars");
+            MedicineCompany MehrDarou= new MedicineCompany("Mehr Darou","Mehr Darou");
+            MedicineCompany Exir = new MedicineCompany("Exir","Exir Pharmaceutical Co");
+            MedicineCompany Faran= new MedicineCompany("Faran","Faran");
+            MedicineCompany FaranShimi= new MedicineCompany("Faran Shimi","Faran Shimi");
+            MedicineCompany Temad= new MedicineCompany("Temad","Temad");
+
+            //save
+            companyRepository.save(DarouPakhsh);
+            companyRepository.save(Zagrosdarou);
+            companyRepository.save(DarouDarmanPars);
+            companyRepository.save(MehrDarou);
+            companyRepository.save(Exir);
+            companyRepository.save(Faran);
+            companyRepository.save(FaranShimi);
+            companyRepository.save(Temad);
+        }
+    }
+
+
 }

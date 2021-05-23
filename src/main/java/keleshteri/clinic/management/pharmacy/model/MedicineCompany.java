@@ -1,12 +1,13 @@
 package keleshteri.clinic.management.pharmacy.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor
 @Entity
 @Table(name = "medicine_companies")
 public class MedicineCompany {
@@ -23,4 +24,11 @@ public class MedicineCompany {
     @Column(name = "description")
     private String description;
 
+    //Constructor
+
+
+    public MedicineCompany(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

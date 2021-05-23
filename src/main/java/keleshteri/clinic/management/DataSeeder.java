@@ -4,6 +4,7 @@ import keleshteri.clinic.management.global.quantity.QuantityService;
 import keleshteri.clinic.management.global.units_measurement.UnitsMeasurementService;
 import keleshteri.clinic.management.locale.Locale;
 import keleshteri.clinic.management.locale.LocaleService;
+import keleshteri.clinic.management.pharmacy.service.MedicineCompanyService;
 import keleshteri.clinic.management.pharmacy.service.MedicineService;
 import keleshteri.clinic.management.user.PermissionService;
 import keleshteri.clinic.management.user.RoleService;
@@ -34,6 +35,9 @@ public class DataSeeder implements CommandLineRunner {
     @Autowired
     MedicineService medicineService;
 
+    @Autowired
+    MedicineCompanyService medicineCompanyService;
+
     @Override
     public void run(String... args) throws Exception {
         localeService.seeder();
@@ -42,6 +46,7 @@ public class DataSeeder implements CommandLineRunner {
         quantityService.seeder();
         unitsMeasurementService.seeder();
         medicineService.seeder();
+        medicineCompanyService.seeder();
 
         userService.seeder();
         System.out.println("DataSeeder");
