@@ -85,6 +85,7 @@ public class MedicineProductController {
         UnitsMeasurement unitsMeasurement = unitsMeasurementService.findModel(request.getUnits());
         //MedicineType
         MedicineType medicineType = medicineTypeService.findModel(request.getType());
+
         //set
         MedicineProduct medicineProduct = new MedicineProduct();
         medicineProduct.setCode(request.getCode());
@@ -94,6 +95,7 @@ public class MedicineProductController {
         medicineProduct.setDoseUnits(unitsMeasurement);
         medicineProduct.setDose(request.getDose());
         medicineProduct.setMedicineType(medicineType);
+
 
         return medicineProductService.update(id,medicineProduct);
     }

@@ -63,6 +63,7 @@ public class MedicineProductService implements GlobalService<MedicineProduct> {
         medicineProduct.setMedicineCompany(medicineProductDetails.getMedicineCompany());
         medicineProduct.setDoseUnits(medicineProductDetails.getDoseUnits());
         medicineProduct.setDose(medicineProductDetails.getDose());
+        medicineProduct.setMedicineType(medicineProductDetails.getMedicineType());
 
         //save
         return ResponseEntity.ok(medicineProductRepository.save(medicineProduct));
