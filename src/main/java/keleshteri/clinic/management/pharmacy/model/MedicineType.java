@@ -1,12 +1,13 @@
 package keleshteri.clinic.management.pharmacy.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor
 @Entity
 @Table(name = "medicine_types")
 public class MedicineType {
@@ -18,9 +19,17 @@ public class MedicineType {
 
     @NotNull(message = "Please Enter medicine type's Code")
     @Column(unique = true,nullable = false)
-    private String code;
+    private Integer code;
 
     @NotNull(message = "Please Enter medicine type's Name")
     @Column(unique = true,nullable = false)
     private String name;
+
+    //Constructor
+
+
+    public MedicineType(Integer code, String name) {
+        this.code = code;
+        this.name = name;
+    }
 }

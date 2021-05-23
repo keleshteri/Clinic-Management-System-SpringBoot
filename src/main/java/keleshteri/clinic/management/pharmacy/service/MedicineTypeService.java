@@ -86,4 +86,18 @@ public class MedicineTypeService implements GlobalService<MedicineType> {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+    public void seeder(){
+         if(medicineTypeRepository.count()==0){
+             MedicineType Syrup = new MedicineType(700,"Syrup");
+             MedicineType Tablet = new MedicineType(701,"Tablet");
+             MedicineType Ampoule = new MedicineType(702,"Ampoule");
+
+             //save
+             medicineTypeRepository.save(Syrup);
+             medicineTypeRepository.save(Tablet);
+             medicineTypeRepository.save(Ampoule);
+         }
+    }
+
 }
