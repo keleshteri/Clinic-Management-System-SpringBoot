@@ -1,6 +1,10 @@
 package keleshteri.clinic.management.pharmacy.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import keleshteri.clinic.management.global.units_measurement.UnitsMeasurement;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,12 +14,15 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter @Setter
+@EqualsAndHashCode
+
 @Entity
 @Table(name = "medicine_products")
-public class MedicineProduct {
+public class MedicineProduct implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,17 +40,24 @@ public class MedicineProduct {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "medicine_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    @JsonBackReference
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Medicine medicine;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "medicine_company_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private MedicineCompany medicineCompany;
 
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "dose_units_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private UnitsMeasurement doseUnits;
 
     @Column(precision = 5, scale = 2)
@@ -59,4 +73,18 @@ public class MedicineProduct {
     private Date updatedAt;
 
 
+    //get
+
+
+    public String getMedicineName() {
+        return medicine.getName();
+    }
+
+    public String getMedicineCompanyName() {
+        return medicineCompany.getName();
+    }
+
+    public String getDoseUnitsName() {
+        return doseUnits.getName();
+    }
 }

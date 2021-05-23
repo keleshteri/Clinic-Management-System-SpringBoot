@@ -1,16 +1,19 @@
 package keleshteri.clinic.management.pharmacy.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter @Setter @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table(name = "medicine_companies")
-public class MedicineCompany {
+public class MedicineCompany implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
