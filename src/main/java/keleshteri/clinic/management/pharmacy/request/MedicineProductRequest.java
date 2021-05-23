@@ -28,16 +28,20 @@ public class MedicineProductRequest {
 
 
 
+    @NotNull(message = "Please enter  medicine")
     private Long medicine;
 
 
 
+    @NotNull(message = "Please enter  medicine's company")
     private Long company;
 
 
 
+    @NotNull(message = "Please enter  dose's units")
     private Long units;
 
 
+    @NotNull(message = "Please enter  dose")
     private Double  dose;
 }
