@@ -23,6 +23,9 @@ public class Patient extends Person implements Serializable {
     @Column(unique = true,nullable = false)
     private Long fileNumber;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
 
 //    @CreatedBy
 //    protected U createdBy;

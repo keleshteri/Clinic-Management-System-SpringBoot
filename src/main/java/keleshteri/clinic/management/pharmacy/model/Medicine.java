@@ -1,11 +1,13 @@
 package keleshteri.clinic.management.pharmacy.model;
 
+import keleshteri.clinic.management.patient.model.PrescriptionMedicine;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter @Setter @NoArgsConstructor
@@ -28,8 +30,13 @@ public class Medicine implements Serializable {
 
     private String description;
 
+    //translations
     @OneToMany(mappedBy = "medicine",fetch = FetchType.LAZY)
     private Set<MedicineTranslation> medicineTranslations;
+
+    //prescription
+//    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL)
+//    private Set<PrescriptionMedicine> prescriptionMedicines;
 
 
     public Medicine(Integer code, String name, String description) {
