@@ -3,6 +3,7 @@ package keleshteri.clinic.management.pharmacy.request;
 import keleshteri.clinic.management.global.units_measurement.UnitsMeasurement;
 import keleshteri.clinic.management.pharmacy.model.Medicine;
 import keleshteri.clinic.management.pharmacy.model.MedicineCompany;
+import keleshteri.clinic.management.pharmacy.model.MedicineType;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -35,6 +36,9 @@ public class MedicineProductRequest {
 
     @NotNull(message = "Please enter  medicine's company")
     private Long company;
+
+    @NotNull(message = "Please enter  medicine's type")
+    private Long type;
 
 
 

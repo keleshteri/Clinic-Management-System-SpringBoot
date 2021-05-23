@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +22,12 @@ public class MedicineTypeService implements GlobalService<MedicineType> {
         this.medicineTypeRepository = medicineTypeRepository;
     }
 
+
+    public MedicineType findModel(Long id){
+        MedicineType medicineType = medicineTypeRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("medicineType not exist with id :" + id));
+        return medicineType;
+    }
 
     @Override
     public List<MedicineType> all() {

@@ -5,11 +5,13 @@ import keleshteri.clinic.management.global.units_measurement.UnitsMeasurementSer
 import keleshteri.clinic.management.pharmacy.model.Medicine;
 import keleshteri.clinic.management.pharmacy.model.MedicineCompany;
 import keleshteri.clinic.management.pharmacy.model.MedicineProduct;
+import keleshteri.clinic.management.pharmacy.model.MedicineType;
 import keleshteri.clinic.management.pharmacy.repository.MedicineProductRepository;
 import keleshteri.clinic.management.pharmacy.request.MedicineProductRequest;
 import keleshteri.clinic.management.pharmacy.service.MedicineCompanyService;
 import keleshteri.clinic.management.pharmacy.service.MedicineProductService;
 import keleshteri.clinic.management.pharmacy.service.MedicineService;
+import keleshteri.clinic.management.pharmacy.service.MedicineTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,9 @@ public class MedicineProductController {
     @Autowired
     private UnitsMeasurementService unitsMeasurementService;
 
+    @Autowired
+    private MedicineTypeService medicineTypeService;
+
 
     @GetMapping()
     public ResponseEntity<List<MedicineProduct>> getAll() {
@@ -42,10 +47,13 @@ public class MedicineProductController {
     public ResponseEntity<MedicineProduct> create(@Valid @RequestBody MedicineProductRequest request) {
         //get medicine
         Medicine medicine = medicineService.findModel(request.getMedicine());
-        //
+        //medicineCompany
         MedicineCompany medicineCompany = medicineCompanyService.findModel(request.getCompany());
-        //
+        //unitsMeasurement
         UnitsMeasurement unitsMeasurement = unitsMeasurementService.findModel(request.getUnits());
+        //MedicineType
+        MedicineType medicineType = medicineTypeService.findModel(request.getType());
+
         //set
         MedicineProduct medicineProduct = new MedicineProduct();
         medicineProduct.setCode(request.getCode());
@@ -54,6 +62,7 @@ public class MedicineProductController {
         medicineProduct.setMedicineCompany(medicineCompany);
         medicineProduct.setDoseUnits(unitsMeasurement);
         medicineProduct.setDose(request.getDose());
+        medicineProduct.setMedicineType(medicineType);
 
         return medicineProductService.create(medicineProduct);
     }
@@ -74,6 +83,8 @@ public class MedicineProductController {
         MedicineCompany medicineCompany = medicineCompanyService.findModel(request.getCompany());
         //
         UnitsMeasurement unitsMeasurement = unitsMeasurementService.findModel(request.getUnits());
+        //MedicineType
+        MedicineType medicineType = medicineTypeService.findModel(request.getType());
         //set
         MedicineProduct medicineProduct = new MedicineProduct();
         medicineProduct.setCode(request.getCode());
@@ -82,6 +93,7 @@ public class MedicineProductController {
         medicineProduct.setMedicineCompany(medicineCompany);
         medicineProduct.setDoseUnits(unitsMeasurement);
         medicineProduct.setDose(request.getDose());
+        medicineProduct.setMedicineType(medicineType);
 
         return medicineProductService.update(id,medicineProduct);
     }
